@@ -1,6 +1,8 @@
 # Overview
 Provides a bunch of useful things to do with GDScript `Array` objects.
 
+See [INDEX.md](INDEX.md) for docs.
+
 # Install
 Just download and drop in to your project.
 
