@@ -12,3 +12,12 @@ static func min_by_key(array: Array, key_func: Callable) -> Variant:
 			min_value = value
 			min_item = item
 	return min_item
+
+
+## Intentionally untyped "out" and return.
+## This allows the duck typing.
+static func map_as(array: Array, selection_func: Callable, out):
+	for item in array:
+		out.append(selection_func.call(item))
+	return out
+
