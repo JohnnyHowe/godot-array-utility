@@ -21,3 +21,10 @@ static func map_as(array: Array, selection_func: Callable, out):
 		out.append(selection_func.call(item))
 	return out
 
+
+static func shuffle(array: Array, rng: RandomNumberGenerator) -> void:
+	for i in array.size() - 2:
+		var j := rng.randi_range(i, array.size() - 1)
+		var tmp = array[i]
+		array[i] = array[j]
+		array[j] = tmp
