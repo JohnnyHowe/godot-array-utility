@@ -1,6 +1,3 @@
-class_name ArrayAggregation
-
-
 ## If items is empty, zero float is returned
 static func sum(items: Array) -> Variant:
 	if items.size() == 0:

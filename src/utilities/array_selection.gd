@@ -1,6 +1,3 @@
-class_name ArraySelection
-
-
 static func min_by_key(array: Array, key_func: Callable) -> Variant:
 	if array.size() == 0:
 		return null

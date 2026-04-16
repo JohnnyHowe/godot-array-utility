@@ -1,6 +1,3 @@
-class_name ArrayCast
-
-
 static func to_string_array(array: Array) -> Array[String]:
 	return copy_values(array, [] as Array[String])
 

@@ -1,6 +1,3 @@
-class_name ArrayDebug
-
-
 static func print_items_on_newlines(items: Array, indent := "    ") -> void:
 	var items_str: String = ""
 	for item in items:

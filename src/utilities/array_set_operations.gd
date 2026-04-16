@@ -1,6 +1,3 @@
-class_name ArraySetOperations
-
-
 static func unique(list: Array) -> Array:
 	return Set.new(list).get_all_values()
 
@@ -15,7 +12,7 @@ static func difference(source: Array, to_remove: Array, equals_override := Equal
 
 
 static func intersection(items1: Array, items2: Array, key_func: Callable = func(x): return x) -> Array:
-	var items1_count := ArrayAggregation.count_each_item(items1)
+	var items1_count := ArrayUtility.ArrayAggregation.count_each_item(items1)
 
 	var result := []
 	for item in items2:

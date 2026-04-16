@@ -10,17 +10,17 @@ class JunkObject:
 
 
 func test_empty_returns_empty() -> Array[ScriptTestResult]:
-	return ScriptTestResult.contains_same_items([], ArraySetOperations.unique([]))
+	return ScriptTestResult.contains_same_items([], ArrayUtility.ArraySetOperations.unique([]))
 
 
 func test_no_duplicates_returns_same_items() -> Array[ScriptTestResult]:
 	var items := [1, 2, 3]
-	return ScriptTestResult.contains_same_items(items, ArraySetOperations.unique(items))
+	return ScriptTestResult.contains_same_items(items, ArrayUtility.ArraySetOperations.unique(items))
 
 
 func test_duplicates_ints_returns_unique_items() -> Array[ScriptTestResult]:
 	var items := [1, 2, 1, 3, 2, 2]
-	return ScriptTestResult.contains_same_items([1, 2, 3], ArraySetOperations.unique(items))
+	return ScriptTestResult.contains_same_items([1, 2, 3], ArrayUtility.ArraySetOperations.unique(items))
 
 
 func test_custom_objects_same_string_value_deduped() -> Array[ScriptTestResult]:
@@ -29,6 +29,6 @@ func test_custom_objects_same_string_value_deduped() -> Array[ScriptTestResult]:
 		JunkObject.new(1),
 		JunkObject.new(2)
 	]
-	var results := ArraySetOperations.unique(items)
+	var results := ArrayUtility.ArraySetOperations.unique(items)
 	var expected := [items[0], items[2]]
 	return ScriptTestResult.contains_same_items(expected, results, func(a, b): return a.value == b.value)

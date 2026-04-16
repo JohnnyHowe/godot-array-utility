@@ -13,21 +13,21 @@ func test_bothArraysEmpty_resultsIn_noDifference():
 	var source := []
 	var to_remove := []
 	var expected := []
-	return ScriptTestResult.contains_same_items(expected, ArraySetOperations.difference(source, to_remove))
+	return ScriptTestResult.contains_same_items(expected, ArrayUtility.ArraySetOperations.difference(source, to_remove))
 
 
 func test_oneSourceItem_noRemove_resultsIn_oneItem():
 	var source := ["item1"]
 	var to_remove := []
 	var expected := ["item1"]
-	return ScriptTestResult.contains_same_items(expected, ArraySetOperations.difference(source, to_remove))
+	return ScriptTestResult.contains_same_items(expected, ArrayUtility.ArraySetOperations.difference(source, to_remove))
 
 
 func test_oneSourceItem_oneRemove_resultsIn_noDifference():
 	var source := ["item1"]
 	var to_remove := ["item1"]
 	var expected := []
-	return ScriptTestResult.contains_same_items(expected, ArraySetOperations.difference(source, to_remove))
+	return ScriptTestResult.contains_same_items(expected, ArrayUtility.ArraySetOperations.difference(source, to_remove))
 
 
 func test_threeCustomSourceAndRemoveItems_withSameValue_resultsIn_allValues():
@@ -44,7 +44,7 @@ func test_threeCustomSourceAndRemoveItems_withSameValue_resultsIn_allValues():
 	]
 
 	var expected = source
-	return ScriptTestResult.contains_same_items(expected, ArraySetOperations.difference(source, to_remove))
+	return ScriptTestResult.contains_same_items(expected, ArrayUtility.ArraySetOperations.difference(source, to_remove))
 
 
 func test_threeCustomSourceAndRemoveItems_withSameValue_withCustomOverride_resultsIn_noDifference():
@@ -62,5 +62,5 @@ func test_threeCustomSourceAndRemoveItems_withSameValue_withCustomOverride_resul
 
 	var expected := []
 	var equals_override = func(a, b): return a.value == b.value
-	return ScriptTestResult.contains_same_items(expected, ArraySetOperations.difference(source, to_remove, equals_override))
+	return ScriptTestResult.contains_same_items(expected, ArrayUtility.ArraySetOperations.difference(source, to_remove, equals_override))
 
