@@ -10,6 +10,20 @@ DOCSTRING = """
 
 
 def main() -> None:
+	args = _parse_args()
+
+	all_scripts: list[Path] = []
+
+	all_scripts += _load_existing_scripts_and_names(args.script)
+	all_scripts += _load_scripts_in_folders(args.script_folder)
+	all_scripts += _load_scripts_in_folders(args.script_folder_recursive, True)
+
+	all_scripts = sorted(list(set(all_scripts)))
+
+	create_namespace_entry(args.output, all_scripts)
+
+
+def _parse_args() -> argparse.Namespace:
 	parser = argparse.ArgumentParser()
 
 	parser.add_argument(
@@ -39,19 +53,11 @@ def main() -> None:
 
 	args = parser.parse_args()
 
-	all_scripts: list[Path] = []
+	if args.script is None: args.script = []
+	if args.script_folder is None: args.script_folder = []
+	if args.script_folder_recursive is None: args.script_folder_recursive = []
 
-	if args.script is not None:
-		all_scripts += _load_existing_scripts_and_names(args.script)
-
-	if args.script_folder is not None:
-		all_scripts += _load_scripts_in_folders(args.script_folder)
-	if args.script_folder_recursive is not None:
-		all_scripts += _load_scripts_in_folders(args.script_folder_recursive, True)
-
-	all_scripts = sorted(list(set(all_scripts)))
-
-	create_namespace_entry(args.output, all_scripts)
+	return args
 
 
 def _load_existing_scripts_and_names(scripts: list[Path]) -> Iterable[Path]:
