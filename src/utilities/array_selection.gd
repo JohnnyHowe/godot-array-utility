@@ -19,6 +19,14 @@ static func map_as(array: Array, selection_func: Callable, out):
 	return out
 
 
+## Returns out with all items from array where select_func.call(item) returns truthy
+static func select(array: Array, select_func: Callable, out = []):
+	for item in array:
+		if select_func.call(item):
+			out.append(item)
+	return out
+
+
 static func shuffle(array: Array, rng: RandomNumberGenerator) -> void:
 	for i in array.size() - 2:
 		var j := rng.randi_range(i, array.size() - 1)
