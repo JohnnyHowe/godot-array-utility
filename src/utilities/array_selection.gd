@@ -1,14 +1,22 @@
 static func min_by_key(array: Array, key_func: Callable) -> Variant:
+	return array[index_of_min_by_key(array, key_func)]
+
+
+static func index_of_min_by_key(array: Array, key_func: Callable) -> int:
 	if array.size() == 0:
-		return null
-	var min_item = array[0]
-	var min_value = key_func.call(array[0])
-	for item in array:
-		var value = key_func.call(item)
+		return -1
+
+	var index_of_min = 0 
+	var min_value = key_func.call(array[index_of_min])
+
+	for index in range(array.size()):
+		var value = key_func.call(array[index])
+
 		if value < min_value:
 			min_value = value
-			min_item = item
-	return min_item
+			index_of_min = index
+
+	return index_of_min
 
 
 ## Intentionally untyped "out" and return.
