@@ -1,5 +1,8 @@
 static func min_by_key(array: Array, key_func: Callable) -> Variant:
-	return array[index_of_min_by_key(array, key_func)]
+	var index := index_of_min_by_key(array, key_func)
+	if index == -1:
+		return null
+	return array[index]
 
 
 static func index_of_min_by_key(array: Array, key_func: Callable) -> int:
