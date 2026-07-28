@@ -2,7 +2,7 @@
 	"name": "array_utility",
 	"dependencies": {
 		"gdscript-script-test-runner": {
-			"url": null,
+			"url": "https://github.com/JohnnyHowe/gdscript-script-test-runner.git",
 			"revision": null
 		},
 		"jons_godot_utilities_to_sort": {
